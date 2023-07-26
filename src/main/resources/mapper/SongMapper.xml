@@ -11,19 +11,19 @@
         <result column="id" property="songUid" jdbcType="INTEGER"/>
         <result column="name" property="songName" jdbcType="VARCHAR"/>
         <result column="url" property="url" jdbcType="VARCHAR"/>
-        <!--        <collection property="songInformation" ofType="com.example.yin.model.domain.SongInformation">-->
-        <!--            <id column="id" property="songUid" jdbcType="INTEGER"/>-->
-        <!--            <result column="desc" property="desc" jdbcType="VARCHAR"/>-->
-        <!--            <result column="author" property="author" jdbcType="VARCHAR"/>-->
-        <!--            <result column="release_time" property="releaseTime" jdbcType="VARCHAR"/>-->
-        <!--            <result column="theme" property="theme" jdbcType="VARCHAR"/>-->
-        <!--            <result column="music_cover" property="musicCover" jdbcType="VARCHAR"/>-->
-        <!--            <result column="language" property="language" jdbcType="INTEGER"/>-->
-        <!--            <result column="backstory" property="backstory" jdbcType="VARCHAR"/>-->
-        <!--            <result column="url" property="url" jdbcType="VARCHAR"/>-->
+                <collection property="songInformation" ofType="com.example.yin.model.domain.SongInformation">
+                    <id column="id" property="songUid" jdbcType="INTEGER"/>
+                    <result column="desc" property="desc" jdbcType="VARCHAR"/>
+                    <result column="author" property="author" jdbcType="VARCHAR"/>
+                    <result column="release_time" property="releaseTime" jdbcType="VARCHAR"/>
+                    <result column="theme" property="theme" jdbcType="VARCHAR"/>
+                    <result column="music_cover" property="musicCover" jdbcType="VARCHAR"/>
+                    <result column="language" property="language" jdbcType="INTEGER"/>
+                    <result column="backstory" property="backstory" jdbcType="VARCHAR"/>
+                    <result column="url" property="url" jdbcType="VARCHAR"/>
         <!--            <result column="name" property="songName" jdbcType="VARCHAR"/>-->
         <!--            <result column="lyric" property="lyric" jdbcType="VARCHAR"/>-->
-        <!--        </collection>-->
+                </collection>
     </resultMap>
     <resultMap id="ListResultMap" type="com.example.yin.model.domain.Song">
         <id column="id" property="id" jdbcType="INTEGER"/>
@@ -35,12 +35,12 @@
         <result column="id" property="songUid" jdbcType="INTEGER"/>
         <result column="name" property="songName" jdbcType="VARCHAR"/>
         <result column="url" property="url" jdbcType="VARCHAR"/>
-        <!--        <collection property="songInformation" ofType="com.example.yin.model.domain.musicCover">-->
-        <!--            <id column="id" property="songUid" jdbcType="INTEGER"/>-->
-        <!--            <result column="music_cover" property="musicCover" jdbcType="VARCHAR"/>-->
-        <!--            <result column="recommend" property="recommend" jdbcType="INTEGER"/>-->
-        <!--            <result column="hot" property="hot" jdbcType="INTEGER"/>-->
-        <!--        </collection>-->
+                <collection property="songInformation" ofType="com.example.yin.model.domain.musicCover">
+                    <id column="id" property="songUid" jdbcType="INTEGER"/>
+                    <result column="music_cover" property="musicCover" jdbcType="VARCHAR"/>
+                    <result column="recommend" property="recommend" jdbcType="INTEGER"/>
+                    <result column="hot" property="hot" jdbcType="INTEGER"/>
+                </collection>
     </resultMap>
 
     <select id="selectSong" resultMap="ListResultMap">
