@@ -40,9 +40,9 @@ public class Song {
     private String url;
 
     //    建立实体类关系
-//    @TableField(exist = false)
-//    private List<SongInformation> songInformation;
-//
-//    @TableField(exist = false)
-//    private List<musicCover> songList;
+    @TableField(exist = false)
+    private List<SongInformation> songInformation;
+
+    @TableField(exist = false)
+    private List<musicCover> songList;
 }
