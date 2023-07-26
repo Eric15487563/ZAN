@@ -1,12 +1,9 @@
 package com.example.yin.model.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-
-import java.util.List;
 
 
 /**
@@ -32,17 +29,4 @@ public class Song {
     private String supportLanguage;
 
     private Integer songNumber;
-
-    private int songUid;
-
-    private String songName;
-
-    private String url;
-
-    //    建立实体类关系
-    @TableField(exist = false)
-    private List<SongInformation> songInformation;
-
-    @TableField(exist = false)
-    private List<musicCover> songList;
 }

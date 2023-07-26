@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.yin.mapper.SongMapper">
-    <resultMap id="BaseResultMap" type="com.example.yin.model.domain.Song">
+    <resultMap id="BaseResultMap" type="com.example.yin.model.domain.Songs.SongBase">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="system_id" property="systemId" jdbcType="INTEGER"/>
         <result column="level_one_id" property="levelOneId" jdbcType="INTEGER"/>
@@ -9,46 +9,51 @@
         <result column="support_language" property="supportLanguage" jdbcType="VARCHAR"/>
         <result column="song_number" property="songNumber" jdbcType="INTEGER"/>
         <result column="id" property="songUid" jdbcType="INTEGER"/>
-        <result column="name" property="songName" jdbcType="VARCHAR"/>
+        <result column="desc" property="desc" jdbcType="VARCHAR"/>
+        <result column="author" property="author" jdbcType="VARCHAR"/>
+        <result column="release_time" property="releaseTime" jdbcType="VARCHAR"/>
+        <result column="theme" property="theme" jdbcType="VARCHAR"/>
+        <result column="music_cover" property="musicCover" jdbcType="VARCHAR"/>
+        <result column="language" property="language" jdbcType="INTEGER"/>
+        <result column="backstory" property="backstory" jdbcType="VARCHAR"/>
         <result column="url" property="url" jdbcType="VARCHAR"/>
-                <collection property="songInformation" ofType="com.example.yin.model.domain.SongInformation">
-                    <id column="id" property="songUid" jdbcType="INTEGER"/>
-                    <result column="desc" property="desc" jdbcType="VARCHAR"/>
-                    <result column="author" property="author" jdbcType="VARCHAR"/>
-                    <result column="release_time" property="releaseTime" jdbcType="VARCHAR"/>
-                    <result column="theme" property="theme" jdbcType="VARCHAR"/>
-                    <result column="music_cover" property="musicCover" jdbcType="VARCHAR"/>
-                    <result column="language" property="language" jdbcType="INTEGER"/>
-                    <result column="backstory" property="backstory" jdbcType="VARCHAR"/>
-                    <result column="url" property="url" jdbcType="VARCHAR"/>
-        <!--            <result column="name" property="songName" jdbcType="VARCHAR"/>-->
-        <!--            <result column="lyric" property="lyric" jdbcType="VARCHAR"/>-->
-                </collection>
+        <result column="name" property="songName" jdbcType="VARCHAR"/>
+        <result column="lyric" property="lyric" jdbcType="VARCHAR"/>
     </resultMap>
-    <resultMap id="ListResultMap" type="com.example.yin.model.domain.Song">
+
+    <resultMap id="CoverResultMap" type="com.example.yin.model.domain.Songs.SongCover">
         <id column="id" property="id" jdbcType="INTEGER"/>
-        <result column="system_id" property="systemId" jdbcType="INTEGER"/>
-        <result column="level_one_id" property="levelOneId" jdbcType="INTEGER"/>
-        <result column="state" property="state" jdbcType="INTEGER"/>
-        <result column="support_language" property="supportLanguage" jdbcType="VARCHAR"/>
         <result column="song_number" property="songNumber" jdbcType="INTEGER"/>
         <result column="id" property="songUid" jdbcType="INTEGER"/>
         <result column="name" property="songName" jdbcType="VARCHAR"/>
+        <result column="music_cover" property="musicCover" jdbcType="VARCHAR"/>
+        <result column="recommend" property="recommend" jdbcType="INTEGER"/>
+        <result column="hot" property="hot" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <resultMap id="ListResultMap" type="com.example.yin.model.domain.Songs.SongList">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="system_id" property="systemId" jdbcType="INTEGER"/>
+        <result column="level_one_id" property="levelOneId" jdbcType="INTEGER"/>
+        <result column="song_number" property="songNumber" jdbcType="INTEGER"/>
+        <result column="id" property="songUid" jdbcType="INTEGER"/>
+        <result column="name" property="songName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="UrlResultMap" type="com.example.yin.model.domain.Songs.SongUrl">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="song_number" property="songNumber" jdbcType="INTEGER"/>
+        <result column="state" property="state" jdbcType="INTEGER"/>
+        <result column="support_language" property="supportLanguage" jdbcType="VARCHAR"/>
+        <result column="id" property="songUid" jdbcType="INTEGER"/>
+        <result column="name" property="songName" jdbcType="VARCHAR"/>
         <result column="url" property="url" jdbcType="VARCHAR"/>
-                <collection property="songInformation" ofType="com.example.yin.model.domain.musicCover">
-                    <id column="id" property="songUid" jdbcType="INTEGER"/>
-                    <result column="music_cover" property="musicCover" jdbcType="VARCHAR"/>
-                    <result column="recommend" property="recommend" jdbcType="INTEGER"/>
-                    <result column="hot" property="hot" jdbcType="INTEGER"/>
-                </collection>
     </resultMap>
 
     <select id="selectSong" resultMap="ListResultMap">
         SELECT s.id,
                s.system_id,
                s.level_one_id,
-               s.state,
-               s.support_language,
                s.song_number,
                si.id,
                si.name
@@ -60,8 +65,6 @@
         SELECT s.id,
                s.system_id,
                s.level_one_id,
-               s.state,
-               s.support_language,
                s.song_number,
                si.id,
                si.name
@@ -84,8 +87,6 @@
         SELECT s.id,
                s.system_id,
                s.level_one_id,
-               s.state,
-               s.support_language,
                s.song_number,
                si.id,
                si.name
@@ -105,8 +106,6 @@
         SELECT s.id,
                s.system_id,
                s.level_one_id,
-               s.state,
-               s.support_language,
                s.song_number,
                si.id,
                si.name
@@ -128,8 +127,6 @@
         SELECT s.id,
                s.system_id,
                s.level_one_id,
-               s.state,
-               s.support_language,
                s.song_number,
                si.id,
                si.name
@@ -151,8 +148,6 @@
         SELECT s.id,
                s.system_id,
                s.level_one_id,
-               s.state,
-               s.support_language,
                s.song_number,
                si.id,
                si.name
@@ -190,17 +185,14 @@
     <select id="findBySongUid" resultType="com.example.yin.model.domain.Song">
         SELECT *
         FROM m_song
-        WHERE id = #{songUid}
+        WHERE id = #{id}
     </select>
 
-    <select id="findFirstNineSongs" resultMap="ListResultMap">
+    <select id="findFirstNineSongs" resultMap="CoverResultMap">
         SELECT s.id,
-               s.system_id,
-               s.level_one_id,
-               s.state,
-               s.support_language,
                s.song_number,
                si.id,
+               si.music_cover,
                si.name,
                si.hot
         FROM m_song_information si
@@ -208,14 +200,11 @@
         WHERE si.hot = 1 LIMIT 9
     </select>
 
-    <select id="findFirstNineSongs1" resultMap="ListResultMap">
+    <select id="findFirstNineSongs1" resultMap="CoverResultMap">
         SELECT s.id,
-               s.system_id,
-               s.level_one_id,
-               s.state,
-               s.support_language,
                s.song_number,
                si.id,
+               si.music_cover,
                si.name,
                si.recommend
         FROM m_song_information si
@@ -223,7 +212,7 @@
         WHERE si.recommend = 1 LIMIT 12
     </select>
 
-    <select id="selectUrlById" resultMap="ListResultMap" parameterType="integer">
+    <select id="selectUrlById" resultMap="UrlResultMap" parameterType="integer">
         SELECT s.id,
                s.system_id,
                s.level_one_id,

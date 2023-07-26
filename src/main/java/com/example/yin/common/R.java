@@ -3,7 +3,7 @@ package com.example.yin.common;
 import lombok.Data;
 
 @Data
-public class R {
+public class R<T> {
 
     private int code;  //返回码
 
