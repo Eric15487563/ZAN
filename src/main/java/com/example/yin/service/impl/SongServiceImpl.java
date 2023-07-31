@@ -51,6 +51,7 @@ public class SongServiceImpl extends ServiceImpl<SongMapper, Song> implements So
         return getSongDTO(levelOneId, page, pageSize, songs, totalSongs);
     }
 
+    //    根据一级分类 按照 songNum查询
     @Override
     public SongDTO getSongsByLevelOneIdAndSongUid(Integer levelOneId, String songNumber, int page, int pageSize) {
         // 计算偏移量和限制数
@@ -62,6 +63,7 @@ public class SongServiceImpl extends ServiceImpl<SongMapper, Song> implements So
         return getSongDTO(levelOneId, page, pageSize, songs, totalSongs);
     }
 
+    //    按照一级分类 按照 songName 关键词 模糊查询
     @Override
     public SongDTO getSongsByLevelOneIdAndKeyword(Integer levelOneId, String keyword, int page, int pageSize) {
         // 计算偏移量和限制数
@@ -73,6 +75,7 @@ public class SongServiceImpl extends ServiceImpl<SongMapper, Song> implements So
         return getSongDTO(levelOneId, page, pageSize, songs, totalSongs);
     }
 
+    //
     private SongDTO getSongDTO(Integer levelOneId, int page, int pageSize, List<Song> songs, double totalSongs) {
         int totalPages = (int) Math.ceil(totalSongs / pageSize);
 
@@ -93,12 +96,13 @@ public class SongServiceImpl extends ServiceImpl<SongMapper, Song> implements So
         return songMapper.searchSongs(keyword, offset, pageSize);
     }
 
-
+    //通过ID主键查询
     @Override
     public Song getSongById(Integer id) {
         return songMapper.selectSongById(id);
     }
 
+    //    通过songID 查询 返回对应ID值
     public Integer getIdBySongUid(String songUid) throws NotFoundException {
         // 根据 songUid 查询对应的 id 值
         Song song = songMapper.findBySongUid(songUid);
@@ -109,21 +113,25 @@ public class SongServiceImpl extends ServiceImpl<SongMapper, Song> implements So
         }
     }
 
+    //  获取最热歌曲
     @Override
     public List<Song> selectFirstNineSongs() {
         return songMapper.findFirstNineSongs();
     }
 
+    //  获取推荐歌曲
     @Override
     public List<Song> selectFirstNineSongs1() {
         return songMapper.findFirstNineSongs1();
     }
 
+    //    根据ID查询 返回URL
     @Override
     public Song getUrlById(Integer id) {
         return songMapper.selectUrlById(id);
     }
 
+    //    根据songID 查询 ID
     public Integer getIdByUrlUid(String songUid) throws NotFoundException {
         // 根据 songUid 查询对应的 id 值
         Song song = songMapper.findByUrlUid(songUid);

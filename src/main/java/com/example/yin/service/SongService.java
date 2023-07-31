@@ -26,14 +26,19 @@ public interface SongService extends IService<Song> {
     //    搜索功能
     List<Song> searchSongs(String keyword, int page, int pageSize);
 
+    //  根据songID查询
     Integer getIdBySongUid(String songUid) throws NotFoundException;
 
+    //    获取热门歌曲
     List<Song> selectFirstNineSongs();
 
+    //    获取推荐歌曲
     List<Song> selectFirstNineSongs1();
 
+    //    根据ID查询URL
     Song getUrlById(Integer id);
 
+    //    根据SongID 查询 id
     Integer getIdByUrlUid(String songUid) throws NotFoundException;
 
 }

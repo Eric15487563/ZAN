@@ -49,7 +49,7 @@ public class SongController {
             // 正常分页查询
             songDTO = songService.getAllSongs(page, pageSize, levelOneId);
         }
-
+        //  判断是否成功获取
         if (songDTO != null) {
             response = R.success("获取成功", songDTO);
         } else {
