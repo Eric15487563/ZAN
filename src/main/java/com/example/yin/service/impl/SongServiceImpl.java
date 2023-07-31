@@ -11,10 +11,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
+//  歌曲Impl层
 
 @Service
 @Slf4j
@@ -30,7 +30,7 @@ public class SongServiceImpl extends ServiceImpl<SongMapper, Song> implements So
         return R.success("获取成功", list);
     }
 
-    // 分页按levelOneId查询
+    // 分页按levelOneId分页查询
     @Override
     public SongDTO getAllSongs(int page, int pageSize, Integer levelOneId) {
         // 计算偏移量和限制数
@@ -51,7 +51,7 @@ public class SongServiceImpl extends ServiceImpl<SongMapper, Song> implements So
         return getSongDTO(levelOneId, page, pageSize, songs, totalSongs);
     }
 
-    //    根据一级分类 按照 songNum查询
+    //    根据一级分类 按照 songNum分页查询
     @Override
     public SongDTO getSongsByLevelOneIdAndSongUid(Integer levelOneId, String songNumber, int page, int pageSize) {
         // 计算偏移量和限制数
@@ -89,14 +89,14 @@ public class SongServiceImpl extends ServiceImpl<SongMapper, Song> implements So
         return songDTO;
     }
 
-    //搜索
+    //  搜索
     @Override
     public List<Song> searchSongs(String keyword, int page, int pageSize) {
         int offset = (page - 1) * pageSize;
         return songMapper.searchSongs(keyword, offset, pageSize);
     }
 
-    //通过ID主键查询
+    //  通过ID主键查询
     @Override
     public Song getSongById(Integer id) {
         return songMapper.selectSongById(id);

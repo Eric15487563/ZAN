@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+//歌曲mapper层
 
 @Repository
 public interface SongMapper extends BaseMapper<Song> {

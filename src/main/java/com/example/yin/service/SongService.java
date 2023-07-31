@@ -8,6 +8,8 @@ import org.apache.ibatis.javassist.NotFoundException;
 
 import java.util.List;
 
+//歌曲Service层
+
 public interface SongService extends IService<Song> {
     R selectSong();
 
