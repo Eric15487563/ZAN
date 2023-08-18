@@ -11,6 +11,5 @@ public class YinMusicApplication {
     public static void main(String[] args) {
         SpringApplication.run(YinMusicApplication.class, args);
     }
-
 }
 

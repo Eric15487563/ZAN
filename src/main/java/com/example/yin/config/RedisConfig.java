@@ -21,6 +21,7 @@ import java.time.Duration;
 
 
 // 用于在Spring Boot项目中使用Redis作为缓存的配置，可以提高项目的性能和响应速度。
+//这段代码的作用是配置Redis的序列化方式，使得在Spring Boot中可以直接使用RedisTemplate和CacheManager来对Redis进行操作。
 @EnableCaching //开启缓存注解
 @Configuration
 public class RedisConfig extends CachingConfigurerSupport {

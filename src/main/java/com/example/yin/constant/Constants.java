@@ -19,5 +19,5 @@ public class Constants {
 
 
     /* 盐值加密 */
-    public static String SALT = "zyt";
+    public static String SALT = "Salt value encryption 663927";
 }

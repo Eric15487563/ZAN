@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 /**
  * 集中一下图像的配置类吧
  * 用于在Spring Boot项目中将指定的资源路径映射到对应的本地路径的配置，可以方便的访问本地磁盘上的资源文件。
+ * 主要是用于处理静态资源的映射关系，而不是拦截请求进行额外操作。
  **/
 @Configuration
 public class WebPicConfig implements WebMvcConfigurer {

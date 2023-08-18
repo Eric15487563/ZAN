@@ -56,9 +56,8 @@ public class SongServiceImpl extends ServiceImpl<SongMapper, Song> implements So
     public SongDTO getSongsByLevelOneIdAndSongUid(Integer levelOneId, String songNumber, int page, int pageSize) {
         // 计算偏移量和限制数
         int offset = (page - 1) * pageSize;
-        int limit = pageSize;
 
-        List<Song> songs = songMapper.selectSongsByLevelOneIdAndSongUid(levelOneId, songNumber, offset, limit);
+        List<Song> songs = songMapper.selectSongsByLevelOneIdAndSongUid(levelOneId, songNumber, offset, pageSize);
         int totalSongs = songMapper.countTotalSongsByLevelOneIdAndSongUid(levelOneId, songNumber);
         return getSongDTO(levelOneId, page, pageSize, songs, totalSongs);
     }

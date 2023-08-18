@@ -42,7 +42,7 @@ public class SongController {
 
         if (songNumber != null && !songNumber.isEmpty()) {
             // 根据levelOneId和songUid精确查询
-            log.info("NUm = {}", songNumber);
+//            log.info("NUm = {}", songNumber);
             songDTO = songService.getSongsByLevelOneIdAndSongUid(levelOneId, songNumber, page, pageSize);
         } else if (keyword != null && !keyword.isEmpty()) {
             // 在levelOneId基础上模糊查询
