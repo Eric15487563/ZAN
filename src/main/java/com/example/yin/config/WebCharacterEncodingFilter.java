@@ -16,15 +16,13 @@ import java.util.List;
  * 因使用WebMvcConfigurer加载静态时 url encode编码无法解析为正常中文问题
  * </p>
  */
-
 @EnableWebMvc
 @Configuration
 public class WebCharacterEncodingFilter implements WebMvcConfigurer {
-
     /**
      * 乱码处理
      */
-    public HttpMessageConverter<String> responseBodyConverter() {
+    private HttpMessageConverter<String> responseBodyConverter() {
         final StringHttpMessageConverter converter = new StringHttpMessageConverter(StandardCharsets.UTF_8);
         converter.setWriteAcceptCharset(false);
         return converter;

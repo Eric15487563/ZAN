@@ -3,6 +3,7 @@ package com.example.yin.DTO;
 import com.baomidou.mybatisplus.annotation.*;
 import com.example.yin.model.domain.Song;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 
 /**
@@ -11,6 +12,7 @@ import lombok.Data;
  * @description:
  * @date 2023/7/15 8:31
  */
+@EqualsAndHashCode(callSuper = true)
 @TableName(value = "m_song")
 @Data
 public class SongBaseDTO extends Song {

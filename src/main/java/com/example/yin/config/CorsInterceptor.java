@@ -1,13 +1,12 @@
 package com.example.yin.config;
 
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.web.servlet.HandlerInterceptor;
 
 
 // 它的作用是拦截请求并为响应设置CORS（跨来源资源共享）头，以允许跨域请求。
-public class CorsInterceptor extends HandlerInterceptorAdapter {
+public class CorsInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {

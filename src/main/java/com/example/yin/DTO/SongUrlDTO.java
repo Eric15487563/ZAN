@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.example.yin.model.domain.Song;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author MI
@@ -12,6 +13,7 @@ import lombok.Data;
  * @description:
  * @date 2023/7/26 10:07
  */
+@EqualsAndHashCode(callSuper = true)
 @TableName(value = "m_song")
 @Data
 public class SongUrlDTO extends Song {
