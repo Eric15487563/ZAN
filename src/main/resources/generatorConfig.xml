@@ -1,0 +1,17 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="dsql" targetRuntime="MyBatis3DynamicSql">
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:13306/magic-api?serverTimezone=Asia/Shanghai&amp;allowPublicKeyRetrieval=true&amp;useSSL=false"
+                        userId="root" password="root"
+        />
+
+        <javaModelGenerator targetPackage="example.model" targetProject="src/main/java"/>
+
+        <javaClientGenerator targetPackage="example.mapper" targetProject="src/main/java"/>
+
+        <table tableName="m_song"/>
+    </context>
+</generatorConfiguration>
