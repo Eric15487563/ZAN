@@ -181,6 +181,43 @@
                 </executions>
             </plugin>
 
+            <!-- https://github.com/diffplug/spotless/tree/main/plugin-maven -->
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>2.39.0</version>
+                <configuration>
+                    <java>
+                        <!-- These are the defaults, you can override if you want -->
+                        <includes>
+                            <include>src/main/java/**/*.java</include>
+                            <include>src/test/java/**/*.java</include>
+                        </includes>
+
+                        <!-- Cleanthat will refactor your code, but it may break your style: apply it before your formatter -->
+                        <cleanthat/>        <!-- has its own section below -->
+
+                        <googleJavaFormat/> <!-- has its own section below -->
+
+                        <importOrder/> <!-- standard import order -->
+                        <removeUnusedImports/> <!-- self-explanatory -->
+                        <formatAnnotations/>  <!-- fixes formatting of type annotations, see below -->
+
+                        <licenseHeader>
+                            <content>/* fyin ZAN Music (C)$YEAR */
+                            </content>  <!-- or <file>${project.basedir}/license-header</file> -->
+                        </licenseHeader>
+                    </java>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>apply</goal>
+                        </goals>
+                        <phase>validate</phase>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>
