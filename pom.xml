@@ -157,6 +157,30 @@
                     </dependency>
                 </dependencies>
             </plugin>
+
+            <!-- 指定多个源代码目录、多个资源文件目录 -->
+            <!-- https://www.mojohaus.org/build-helper-maven-plugin/usage.html -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.4.0</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>src/java/main</source>
+                                <source>src/java/generated</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 </project>
