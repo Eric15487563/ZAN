@@ -46,6 +46,12 @@
             <artifactId>mybatis-dynamic-sql</artifactId>
             <version>1.5.0</version>
         </dependency>
+        <!-- https://pagehelper.github.io/ -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.4.7</version>
+        </dependency>
 
         <!--引入测试-->
         <dependency>
