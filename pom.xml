@@ -14,16 +14,24 @@
     <description>music-website project for Spring Boot</description>
 
     <properties>
+        <!-- compile -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>20</java.version>
         <maven.compiler.source>20</maven.compiler.source>
         <maven.compiler.target>20</maven.compiler.target>
 
+        <!-- dependency -->
         <dependency.mysql-connector-j.version>8.1.0</dependency.mysql-connector-j.version>
         <dependency.mybatis-spring-boot-starter.version>3.0.2</dependency.mybatis-spring-boot-starter.version>
         <dependency.mybatis-dynamic-sql.version>1.5.0</dependency.mybatis-dynamic-sql.version>
         <dependency.pagehelper-spring-boot-starter.version>1.4.7</dependency.pagehelper-spring-boot-starter.version>
+
+        <!-- build -->
+        <build.mybatis-generator.mysql-url>
+            <![CDATA[jdbc:mysql://localhost:13306/magic-api?serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false]]></build.mybatis-generator.mysql-url>
+        <build.mybatis-generator.mysql-user>root</build.mybatis-generator.mysql-user>
+        <build.mybatis-generator.mysql-password>root</build.mybatis-generator.mysql-password>
     </properties>
 
     <!--web启动 内嵌tomcat-->
@@ -140,13 +148,12 @@
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>1.4.2</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>mysql</groupId>
-                        <artifactId>mysql-connector-java</artifactId>
-                        <version>8.0.33</version>
-                    </dependency>
-                </dependencies>
+                <configuration>
+                    <configurationFile>doc/mybatis-generatorConfig.xml</configurationFile>
+                    <overwrite>true</overwrite>
+                    <includeCompileDependencies>true</includeCompileDependencies>
+                    <verbose>true</verbose>
+                </configuration>
             </plugin>
 
             <!-- 指定多个源代码目录、多个资源文件目录 -->
