@@ -19,6 +19,11 @@
         <java.version>20</java.version>
         <maven.compiler.source>20</maven.compiler.source>
         <maven.compiler.target>20</maven.compiler.target>
+
+        <dependency.mysql-connector-j.version>8.1.0</dependency.mysql-connector-j.version>
+        <dependency.mybatis-spring-boot-starter.version>3.0.2</dependency.mybatis-spring-boot-starter.version>
+        <dependency.mybatis-dynamic-sql.version>1.5.0</dependency.mybatis-dynamic-sql.version>
+        <dependency.pagehelper-spring-boot-starter.version>1.4.7</dependency.pagehelper-spring-boot-starter.version>
     </properties>
 
     <!--web启动 内嵌tomcat-->
@@ -28,29 +33,29 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!--mysql-connector-java就是帮助java程序操作mysql的驱动程序。通过与mysql服务端建立连接，发送sql语句并且获取结果集-->
+        <!--mysql-connector-java 就是帮助java程序操作mysql的驱动程序。通过与mysql服务端建立连接，发送sql语句并且获取结果集-->
         <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
-            <version>8.1.0</version>
+            <version>${dependency.mysql-connector-j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>3.0.2</version>
+            <version>${dependency.mybatis-spring-boot-starter.version}</version>
         </dependency>
         <!-- https://mybatis.org/mybatis-dynamic-sql/docs/introduction.html -->
         <dependency>
             <groupId>org.mybatis.dynamic-sql</groupId>
             <artifactId>mybatis-dynamic-sql</artifactId>
-            <version>1.5.0</version>
+            <version>${dependency.mybatis-dynamic-sql.version}</version>
         </dependency>
         <!-- https://pagehelper.github.io/ -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>1.4.7</version>
+            <version>${dependency.pagehelper-spring-boot-starter.version}</version>
         </dependency>
 
         <!--引入测试-->
@@ -70,23 +75,9 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
-
-    <!-- 阿里云搭建的国内镜像http://maven.aliyun.com，跑起来速度很快，可以进行配置 -->
-    <repositories>
-        <repository>
-            <id>nexus-aliyun</id>
-            <name>nexus-aliyun</name>
-            <url>https://maven.aliyun.com/repository/central</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
     <build>
         <plugins>
@@ -213,11 +204,27 @@
                     <execution>
                         <goals>
                             <goal>apply</goal>
+                            <goal>check</goal>
                         </goals>
-                        <phase>validate</phase>
+                        <phase>process-sources</phase>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
+
+    <!-- 阿里云搭建的国内镜像http://maven.aliyun.com，跑起来速度很快，可以进行配置 -->
+    <repositories>
+        <repository>
+            <id>nexus-aliyun</id>
+            <name>nexus-aliyun</name>
+            <url>https://maven.aliyun.com/repository/central</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>
