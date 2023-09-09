@@ -144,14 +144,14 @@ CREATE TABLE `m_song_vocal`
 INSERT INTO `m_system`(id, name, time, state)
 VALUES (1, '赞美诗', '2023-07-15 19:04:14', 1);
 
-INSERT INTO `m_class`(id, level_id, name, class_type, desc, time, state)
-VALUES (1, NULL, '我灵之歌', 1, '我灵之歌', '2023-07-15 08:05:44', 1);
+-- INSERT INTO `m_class`(id, level_id, name, class_type, desc, time, state)
+-- VALUES (1, NULL, '我灵之歌', 1, '我灵之歌', '2023-07-15 08:05:44', 1);
 
-INSERT INTO `m_language`(id, "language", "desc")
+INSERT INTO `m_language`(id, language, `desc`)
 VALUES (1, '中文', NULL);
 
-INSERT INTO `m_song_information`(id, song_id, song_number, "desc", author, release_time, theme, music_cover, "language",
-                                 backstory, "time", state, name, url, lyric, recommend, hot)
+INSERT INTO `m_song_information`(id, song_id, song_number, `desc`, author, release_time, theme, music_cover, language,
+                                 backstory, time, state, name, url, lyric, recommend, hot)
 VALUES (1, 1, 1, '感谢我主', NULL, NULL, NULL, NULL, 1, NULL, '2023-07-15 08:12:06', 1, '感谢我主', NULL, NULL, 1, 1),
        (2, 2, 2, '赞美恩典的主', NULL, NULL, NULL, NULL, 1, NULL, '2023-07-21 11:15:46', 1, '赞美恩典的主', NULL, NULL,
         1, 1),
