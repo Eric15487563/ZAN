@@ -173,8 +173,8 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>src/java/main</source>
-                                <source>src/java/generated</source>
+                                <source>src/main/java</source>
+                                <source>src/generated/java</source>
                             </sources>
                         </configuration>
                     </execution>
