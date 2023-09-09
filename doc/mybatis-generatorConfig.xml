@@ -1,0 +1,64 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- https://mybatis.org/generator/configreference/properties.html -->
+    <properties resource="application-local.properties"/>
+
+    <context id="mysql" targetRuntime="MyBatis3DynamicSql">
+        <!-- properties https://mybatis.org/generator/configreference/context.html#supported-properties -->
+        <property name="autoDelimitKeywords" value="true"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <!-- plugins https://mybatis.org/generator/reference/plugins.html -->
+        <plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.VirtualPrimaryKeyPlugin"/>
+
+        <!-- https://mybatis.org/generator/configreference/commentGenerator.html -->
+        <commentGenerator>
+            <property name="addRemarkComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!-- https://mybatis.org/generator/configreference/jdbcConnection.html -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="${mybatis.generator.mysql-url}"
+                        userId="${mybatis.generator.mysql-user}"
+                        password="${mybatis.generator.mysql-password}"
+        />
+
+        <!-- https://mybatis.org/generator/configreference/javaTypeResolver.html -->
+        <javaTypeResolver>
+            <property name="useJSR310Types" value="true"/>
+        </javaTypeResolver>
+
+        <!-- https://mybatis.org/generator/configreference/javaModelGenerator.html -->
+        <javaModelGenerator targetPackage="com.fyin.zan.infrastructure.persistence.mybatis.model"
+                            targetProject="src/generated/java">
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- https://mybatis.org/generator/configreference/javaClientGenerator.html -->
+        <javaClientGenerator targetPackage="com.fyin.zan.infrastructure.persistence.mybatis"
+                             targetProject="src/generated/java">
+            <property name="dynamicSqlSupportPackage" value="com.fyin.zan.infrastructure.persistence.mybatis.dynamic"/>
+        </javaClientGenerator>
+
+        <!-- https://mybatis.org/generator/configreference/table.html -->
+        <table tableName="m_song" domainObjectName="SongRow" mapperName="SongTableMapper"
+               delimitIdentifiers="true" delimitAllColumns="true">
+            <property name="dynamicSqlSupportClassName" value="SongTableSupport"/>
+            <property name="dynamicSqlTableObjectName" value="SongTable"/>
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="m_song_information" domainObjectName="SongInfoRow" mapperName="SongTableMapper"
+               delimitIdentifiers="true" delimitAllColumns="true">
+            <property name="dynamicSqlSupportClassName" value="SongInfoTableSupport"/>
+            <property name="dynamicSqlTableObjectName" value="SongInfoTable"/>
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+    </context>
+</generatorConfiguration>
